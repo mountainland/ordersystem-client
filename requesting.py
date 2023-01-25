@@ -51,13 +51,13 @@ class Ordersystem():
         response = requests.post(url, data=json.dumps(data), headers=headers)
         return response.json()
 
-    def retrieve_product_detail_api(product_id):
+    def retrieve_product_detail_api(self, product_id):
         """Retrieve a specific product by its id"""
         url = f"{self.base_url}/ordersystem/api/product/{product_id}"
         response = requests.get(url)
         return response.json()
 
-    def update_product_detail_api(product_id, data):
+    def update_product_detail_api(self, product_id, data):
         """Update a specific product by its id"""
         url = f"{self.base_url}/ordersystem/api/product/{product_id}"
         headers = {'Content-Type': 'application/json'}
