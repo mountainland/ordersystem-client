@@ -46,12 +46,12 @@ class Ordersystem():
         response = requests.get(url)
         return response.json()
 
-    def create_product_list_api(self, data):
+    def create_product_list_api(self, product: Product):
         """Create a new product"""
         url = f"{self.base_url}/ordersystem/api/products/"
         headers = {'Content-Type': 'application/json'}
-        response = requests.post(url, data=json.dumps(data), headers=headers)
-        return Product.update((response.json()))
+        response = requests.post(url, data=json(product), headers=headers)
+        return response.json()
 
     def retrieve_product_detail_api(self, product: Product):
         """Retrieve a specific product by its id"""
