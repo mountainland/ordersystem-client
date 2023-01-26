@@ -1,6 +1,8 @@
 import requests
 import json
 
+from models import Product
+
 class Ordersystem():
     def __init__(self, base_url):
         # Define base URL for API
@@ -49,17 +51,17 @@ class Ordersystem():
         url = f"{self.base_url}/ordersystem/api/products/"
         headers = {'Content-Type': 'application/json'}
         response = requests.post(url, data=json.dumps(data), headers=headers)
-        return response.json()
+        return Product.update((response.json()))
 
-    def retrieve_product_detail_api(self, product_id):
+    def retrieve_product_detail_api(self, product: Product):
         """Retrieve a specific product by its id"""
-        url = f"{self.base_url}/ordersystem/api/product/{product_id}"
+        url = f"{self.base_url}/ordersystem/api/product/{product.id}"
         response = requests.get(url)
-        return response.json()
+        return product.update(response.json())
 
-    def update_product_detail_api(self, product_id, data):
+    def update_product_detail_api(self, product: Product):
         """Update a specific product by its id"""
-        url = f"{self.base_url}/ordersystem/api/product/{product_id}"
+        url = f"{self.base_url}/ordersystem/api/product/{product.id}"
         headers = {'Content-Type': 'application/json'}
-        response = requests.put(url, data=json.dumps(data), headers=headers)
+        response = requests.put(url, data=json(product), headers=headers)
         return response.json()
