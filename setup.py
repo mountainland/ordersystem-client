@@ -7,6 +7,6 @@ setup(
     long_description_content_type='text/markdown',
     install_requires=[
         'requests==2.28.2',
-        'setuptools==67.3.2',
+        'setuptools==67.3.3',
     ],
 )
